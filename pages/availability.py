@@ -35,9 +35,15 @@ st.write(
 # =====================================
 
 
-sheet_url = st.text_input(
-    "Google Sheet URL"
-)
+try:
+
+    sheet_url = st.secrets["GOOGLE_SHEET_URL"]
+
+except:
+
+    sheet_url = st.text_input(
+        "Google Sheet URL"
+    )
 
 
 if sheet_url:
