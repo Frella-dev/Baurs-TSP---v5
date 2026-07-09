@@ -41,14 +41,31 @@ if "generated" not in st.session_state:
 # INPUT SECTION
 # ==============================
 
-ors_api_key = st.text_input(
-    "OpenRouteService API Key (Optional)",
-    type="password"
-)
+# ======================
+# LOAD SECRETS
+# ======================
 
-sheet_url = st.text_input(
-    "Google Sheet URL"
-)
+try:
+
+    sheet_url = st.secrets["GOOGLE_SHEET_URL"]
+
+except:
+
+    sheet_url = st.text_input(
+        "Google Sheet URL"
+    )
+
+
+try:
+
+    ors_api_key = st.secrets["ORS_API_KEY"]
+
+except:
+
+    ors_api_key = st.text_input(
+        "OpenRouteService API Key",
+        type="password"
+    )
 
 
 planning_mode = st.radio(
